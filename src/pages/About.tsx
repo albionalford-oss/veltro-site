@@ -6,32 +6,32 @@ interface AboutProps {
 
 const leadership = [
   {
-    name: 'Marcus Iñiguez',
+    name: 'Raj Acharya',
     title: 'Chairman & Managing Director',
-    bio: 'Over 30 years advising Fortune 100 CEOs on strategic transformation and global growth.',
+    bio: 'Over 10+ years advising on strategic transformation and global growth.',
     image: 'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=400',
-    initials: 'MI',
+    initials: 'RA',
   },
   {
-    name: 'Sophie Hartmann',
+    name: 'Sylvie Roy',
     title: 'Chief Executive Officer',
     bio: 'Former partner at two of the world\'s top firms, with expertise in digital transformation at scale.',
     image: 'https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=400',
-    initials: 'SH',
+    initials: 'SR',
   },
   {
-    name: 'David Okafor',
-    title: 'Global Head of Finance Practice',
-    bio: 'Led $300B+ in M&A transactions across North America, Europe, and Sub-Saharan Africa.',
+    name: 'Jim Lee',
+    title: 'Global Head of HR Management',
+    bio: 'Experience in international hr and company management practices',
     image: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=400',
-    initials: 'DO',
+    initials: 'JL',
   },
   {
-    name: 'Yuki Tanaka',
+    name: 'Kiran Thapa',
     title: 'Global Head of Technology',
     bio: 'Architect of large-scale AI and cloud transformations for global financial and industrial leaders.',
     image: 'https://images.pexels.com/photos/3771807/pexels-photo-3771807.jpeg?auto=compress&cs=tinysrgb&w=400',
-    initials: 'YT',
+    initials: 'KT',
   },
 ];
 
@@ -42,14 +42,6 @@ const values = [
   { number: '04', title: 'Lasting Impact', desc: 'We don\'t optimize for short-term metrics. We build capabilities that compound in value over years and decades.' },
 ];
 
-const timeline = [
-  { year: '1989', event: 'Founded in London with a team of 12 senior consultants.' },
-  { year: '1997', event: 'Expanded to North America; opened New York and Chicago offices.' },
-  { year: '2004', event: 'Launched the Technology practice amid the digital revolution.' },
-  { year: '2011', event: 'Surpassed 10,000 consultants globally; established Asia-Pacific hub in Singapore.' },
-  { year: '2018', event: 'Pioneered AI Strategy advisory — among the first global firms to do so.' },
-  { year: '2024', event: 'Ranked #1 global management consulting firm for the fourth consecutive year.' },
-];
 
 export default function About({ onNavigate }: AboutProps) {
   return (
@@ -70,7 +62,7 @@ export default function About({ onNavigate }: AboutProps) {
             Built on Conviction.<br />Driven by <span className="text-[#c8102e]">Purpose.</span>
           </h1>
           <p className="text-gray-400 text-lg max-w-xl leading-relaxed">
-            For 35 years, Veltro International has helped the world's most consequential organizations navigate complexity and realize their full potential.
+            New & Advance, Veltro International is ready to work with world's most consequential organizations ready to solve their complexity and show full potential.
           </p>
         </div>
       </section>
@@ -91,7 +83,7 @@ export default function About({ onNavigate }: AboutProps) {
                 Veltro International was founded on the belief that complex challenges are best met with clear thinking, bold strategy, and an unwavering commitment to implementation. We partner with organizations at the most critical inflection points in their histories.
               </p>
               <p className="text-gray-600 leading-relaxed mb-10">
-                From sovereign wealth funds to Fortune 500 enterprises, family businesses to government institutions — we bring the same rigor, the same curiosity, and the same determination to make a lasting difference.
+                From Growing Business to international companies, family businesses to government institutions — we bring the same rigor, the same curiosity, and the same determination to make a lasting difference.
               </p>
               <button
                 onClick={() => onNavigate('contact')}
@@ -131,35 +123,6 @@ export default function About({ onNavigate }: AboutProps) {
                 <p className="text-gray-500 text-sm leading-relaxed">{v.desc}</p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline */}
-      <section className="py-28 bg-[#0a1628]">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="flex items-center gap-3 mb-5">
-            <div className="w-8 h-0.5 bg-[#c8102e]" />
-            <span className="text-[#c8102e] text-xs font-bold tracking-widest uppercase">Our History</span>
-          </div>
-          <h2 className="text-4xl font-bold text-white mb-16">35 Years of Impact</h2>
-          <div className="relative">
-            <div className="absolute left-24 top-0 bottom-0 w-px bg-white/10" />
-            <div className="space-y-10">
-              {timeline.map((item, i) => (
-                <div key={i} className="flex gap-12 items-start group">
-                  <div className="w-16 shrink-0 text-right">
-                    <span className="text-[#c8102e] font-bold text-sm tracking-wider">{item.year}</span>
-                  </div>
-                  <div className="relative flex items-start gap-8">
-                    <div className="absolute -left-4 top-1.5 w-2 h-2 rounded-full bg-[#c8102e] shrink-0" />
-                    <p className="text-gray-400 text-sm leading-relaxed pl-4 group-hover:text-gray-200 transition-colors">
-                      {item.event}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
