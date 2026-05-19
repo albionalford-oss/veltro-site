@@ -37,8 +37,8 @@ function CounterSection() {
 
   const clients = useCountUp(11, 2000, visible);
   const countries = useCountUp(9, 1800, visible);
-  const projects = useCountUp(6, 2200, visible);
-  const years = useCountUp(35, 1500, visible);
+  const projects = useCountUp(15, 2200, visible);
+  const years = useCountUp(2, 1500, visible);
 
   const stats = [
     { value: clients, suffix: '+', label: 'Global Clients' },
@@ -66,32 +66,24 @@ const sectors = [
     icon: TrendingUp,
     title: 'Finance',
     description: 'Capital strategy, M&A advisory, risk management, and financial restructuring for global enterprises.',
-    stat: '$4.2T',
-    statLabel: 'Assets Advised',
     color: 'group-hover:text-[#c8102e]',
   },
   {
     icon: Cpu,
     title: 'Technology',
     description: 'Digital transformation, AI integration, cloud architecture, and technology-driven growth strategies.',
-    stat: '340+',
-    statLabel: 'Tech Engagements',
     color: 'group-hover:text-[#c8102e]',
   },
   {
     icon: Users,
     title: 'Human Resources',
     description: 'Talent strategy, organizational design, leadership development, and workforce transformation.',
-    stat: '1.2M+',
-    statLabel: 'Professionals Impacted',
     color: 'group-hover:text-[#c8102e]',
   },
   {
     icon: BarChart3,
     title: 'Management',
     description: 'Corporate strategy, operational excellence, performance optimization, and enterprise transformation.',
-    stat: '98%',
-    statLabel: 'Client Retention',
     color: 'group-hover:text-[#c8102e]',
   },
 ];
@@ -108,12 +100,6 @@ const insights = [
     title: 'AI-Driven Strategy: How Leaders Are Reimagining Competitive Advantage',
     date: 'April 2026',
     image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
-  },
-  {
-    tag: 'Management',
-    title: 'Organizational Resilience: Building Teams That Thrive Under Uncertainty',
-    date: 'April 2026',
-    image: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
 ];
 
@@ -220,14 +206,6 @@ export default function Home({ onNavigate }: HomeProps) {
                   <p className={`text-sm leading-relaxed mb-8 transition-colors duration-300 ${activeSector === i ? 'text-gray-400' : 'text-gray-500'}`}>
                     {sector.description}
                   </p>
-                  <div className={`pt-6 border-t transition-colors duration-300 ${activeSector === i ? 'border-white/10' : 'border-gray-100'}`}>
-                    <div className={`text-2xl font-bold transition-colors duration-300 ${activeSector === i ? 'text-[#c8102e]' : 'text-[#0a1628]'}`}>
-                      {sector.stat}
-                    </div>
-                    <div className={`text-xs tracking-wider uppercase mt-1 transition-colors duration-300 ${activeSector === i ? 'text-gray-500' : 'text-gray-400'}`}>
-                      {sector.statLabel}
-                    </div>
-                  </div>
                   <div className={`absolute bottom-0 left-0 h-0.5 bg-[#c8102e] transition-all duration-300 ${activeSector === i ? 'w-full' : 'w-0'}`} />
                 </div>
               );
@@ -249,19 +227,19 @@ export default function Home({ onNavigate }: HomeProps) {
                 "We don't just advise — we build the capabilities that allow organizations to thrive long after we've left."
               </blockquote>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-[#c8102e] flex items-center justify-center text-white font-bold text-sm">MI</div>
+                <div className="w-12 h-12 bg-[#c8102e] flex items-center justify-center text-white font-bold text-sm">RA</div>
                 <div>
-                  <div className="text-white font-semibold text-sm">Marcus Iñiguez</div>
+                  <div className="text-white font-semibold text-sm">Raj Acharya</div>
                   <div className="text-gray-500 text-xs tracking-wide">Chairman & Managing Director</div>
                 </div>
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
               {[
-                { icon: Globe, label: 'Global Reach', desc: '68 countries, 142 offices' },
-                { icon: Award, label: 'Top Ranked', desc: '#1 consulting firm globally, 2024' },
-                { icon: Users, label: 'Our People', desc: '28,000+ expert consultants' },
-                { icon: TrendingUp, label: 'Client Growth', desc: '3.4x average client growth' },
+                { icon: Globe, label: 'Global Reach', desc: '9 countries, 3 Operation offices' },
+                { icon: Award, label: 'Top Ranked', desc: 'New and professional firm' },
+                { icon: Users, label: 'Our People', desc: '11+ expert consultants' },
+                { icon: TrendingUp, label: 'Client Growth', desc: 'Fastest average client growth' },
               ].map(({ icon: Icon, label, desc }) => (
                 <div key={label} className="border border-white/10 p-6 hover:border-[#c8102e]/40 transition-colors">
                   <Icon size={24} className="text-[#c8102e] mb-4" strokeWidth={1.5} />

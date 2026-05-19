@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { MapPin, Mail, Phone, ArrowRight, CheckCircle } from 'lucide-react';
 
 const offices = [
-  { city: 'London', region: 'Europe HQ', address: '1 Canada Square, Canary Wharf', phone: '+44 20 7946 0800' },
-  { city: 'New York', region: 'Americas HQ', address: '540 Madison Avenue, 25th Floor', phone: '+1 212 555 0140' },
-  { city: 'Singapore', region: 'Asia-Pacific HQ', address: '1 Raffles Place, Tower 1', phone: '+65 6321 0900' },
+  { city: 'Barcelona', region: 'Europe HQ' },
+  { city: 'Vancouver', region: 'Americas HQ' },
+  { city: 'Kathmandu', region: 'Asia-Pacific HQ' },
   { city: 'Dubai', region: 'MENA Hub', address: 'DIFC, Gate Village Building 6', phone: '+971 4 330 1200' },
   { city: 'São Paulo', region: 'Latin America', address: 'Av. Faria Lima, 3400 — Itaim Bibi', phone: '+55 11 3055 0800' },
   { city: 'Nairobi', region: 'Africa Hub', address: 'Upperhill, United Nations Crescent', phone: '+254 20 2870 000' },
@@ -13,7 +13,6 @@ const offices = [
 const inquiryTypes = [
   'New Client Engagement',
   'Career Opportunity',
-  'Press & Media',
   'Research Collaboration',
   'Speaking Request',
   'Other',
@@ -176,9 +175,8 @@ export default function Contact() {
                 <h3 className="text-xs font-bold tracking-widest uppercase text-gray-400 mb-6">Direct Contacts</h3>
                 <div className="space-y-4">
                   {[
-                    { icon: Mail, label: 'General Inquiries', value: 'info@veltro.com' },
-                    { icon: Mail, label: 'Press & Media', value: 'press@veltro.com' },
-                    { icon: Phone, label: 'Global Switchboard', value: '+44 20 7946 0800' },
+                    { icon: Mail, label: 'General Inquiries', value: 'contact@veltro.com' },
+                    { icon: Phone, label: 'Global Switchboard', value: '+1 (604) 000-0000' },
                   ].map(({ icon: Icon, label, value }) => (
                     <div key={label} className="flex items-start gap-4 p-4 bg-[#f7f7f5]">
                       <Icon size={18} className="text-[#c8102e] mt-0.5 shrink-0" />
@@ -233,8 +231,8 @@ export default function Contact() {
                     <p className="text-xs text-gray-400 tracking-wide uppercase">{office.region}</p>
                   </div>
                 </div>
-                <p className="text-gray-500 text-sm mb-2 ml-7">{office.address}</p>
-                <p className="text-gray-400 text-sm ml-7">{office.phone}</p>
+                {office.address && <p className="text-gray-500 text-sm mb-2 ml-7">{office.address}</p>}
+                {office.phone && <p className="text-gray-400 text-sm ml-7">{office.phone}</p>}
               </div>
             ))}
           </div>
