@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import { MapPin, Mail, Phone, ArrowRight, CheckCircle } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { MapPin, Mail, Phone, ArrowRight, CheckCircle, AlertCircle } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const offices = [
   { city: 'Barcelona', region: 'Europe HQ' },
   { city: 'Vancouver', region: 'Americas HQ' },
   { city: 'Kathmandu', region: 'Asia-Pacific HQ' },
-  { city: 'Dubai', region: 'MENA Hub', address: 'DIFC, Gate Village Building 6', phone: '+971 4 330 1200' },
-  { city: 'São Paulo', region: 'Latin America', address: 'Av. Faria Lima, 3400 — Itaim Bibi', phone: '+55 11 3055 0800' },
-  { city: 'Nairobi', region: 'Africa Hub', address: 'Upperhill, United Nations Crescent', phone: '+254 20 2870 000' },
+  { city: 'New Delhi', region: 'South Asia' },
+  { city: 'Durban', region: 'Africa Hub' },
 ];
 
 const inquiryTypes = [
@@ -29,6 +29,11 @@ export default function Contact() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    emailjs.init('uuANPYnfi0deAvZUD');
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -37,9 +42,22 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1200));
-    setLoading(false);
-    setSubmitted(true);
+    setError('');
+
+    try {
+      await emailjs.send('service_zi3g5nf', 'template_6wcyi6j', {
+        from_name: form.name,
+        from_email: form.email,
+        message: `Company: ${form.company}\nPhone: ${form.phone}\nInquiry Type: ${form.type}\n\nMessage:\n${form.message}`,
+      });
+
+      setSubmitted(true);
+      setForm({ name: '', company: '', email: '', phone: '', type: '', message: '' });
+    } catch {
+      setError('Failed to send message. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -76,6 +94,18 @@ export default function Contact() {
                   <p className="text-gray-600 text-sm leading-relaxed">
                     Your message has been received. A member of our team will be in touch within one business day.
                   </p>
+                </div>
+              ) : error ? (
+                <div className="flex flex-col items-start gap-4 p-10 bg-red-50 border-l-4 border-red-500">
+                  <AlertCircle size={40} className="text-red-500" />
+                  <h3 className="text-xl font-bold text-[#0a1628]">Error sending message</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{error}</p>
+                  <button
+                    onClick={() => setError('')}
+                    className="text-sm font-semibold text-red-600 hover:text-red-700 underline"
+                  >
+                    Try again
+                  </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -175,7 +205,7 @@ export default function Contact() {
                 <h3 className="text-xs font-bold tracking-widest uppercase text-gray-400 mb-6">Direct Contacts</h3>
                 <div className="space-y-4">
                   {[
-                    { icon: Mail, label: 'General Inquiries', value: 'contact@veltro.com' },
+                    { icon: Mail, label: 'General Inquiries', value: 'contact@veltroin.com' },
                     { icon: Phone, label: 'Global Switchboard', value: '+1 (604) 000-0000' },
                   ].map(({ icon: Icon, label, value }) => (
                     <div key={label} className="flex items-start gap-4 p-4 bg-[#f7f7f5]">
@@ -212,12 +242,12 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Global Offices */}
+      {/* Global Presence */}
       <section className="py-24 bg-[#f7f7f5]">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="flex items-center gap-3 mb-5">
             <div className="w-8 h-0.5 bg-[#c8102e]" />
-            <span className="text-[#c8102e] text-xs font-bold tracking-widest uppercase">Global Offices</span>
+            <span className="text-[#c8102e] text-xs font-bold tracking-widest uppercase">Global Presence</span>
           </div>
           <h2 className="text-4xl font-bold text-[#0a1628] mb-16">Find Us Worldwide</h2>
 
